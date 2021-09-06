@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.ariqandrean.postapplication.activity.LoginActivity
+import com.ariqandrean.postapplication.activity.MyProfileActivity
 import com.ariqandrean.postapplication.databinding.BottomMenuBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -32,8 +33,8 @@ class BottomMenuFragment : BottomSheetDialogFragment() {
         logoutLinear = binding.bottommenuLogout
 
         profileLinear.setOnClickListener {
-//            val intent = Intent(requireActivity(), ProfileActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(requireActivity(), MyProfileActivity::class.java)
+            startActivity(intent)
         }
 
         logoutLinear.setOnClickListener {
