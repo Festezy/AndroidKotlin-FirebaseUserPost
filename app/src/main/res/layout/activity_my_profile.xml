@@ -44,7 +44,9 @@
             android:id="@+id/myprofileCircleImageView"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_person_24" />
+            android:src="@drawable/ic_baseline_person_24"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
 
         <TextView
             android:id="@+id/myprofileNameTextView"
@@ -60,11 +62,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
         android:background="@color/gray"
+        android:padding="16dp"
         android:text="PRIMARY DETAIL"
-        android:textSize="13sp"
-        android:textColor="@color/white"/>
+        android:textColor="#37474F"
+        android:textSize="13sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,15 +81,17 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
+
         <EditText
             android:id="@+id/myProfileBioEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:padding="10dp"
+            android:clickable="false"
             android:hint="Bio"
-            android:clickable="false"/>
+            android:minHeight="48dp"
+            android:padding="10dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,15 +100,17 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
+
         <EditText
             android:id="@+id/myProfileEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:padding="10dp"
+            android:clickable="false"
             android:hint="Email"
-            android:clickable="false"/>
+            android:minHeight="48dp"
+            android:padding="10dp" />
 
     </LinearLayout>
 </LinearLayout>
