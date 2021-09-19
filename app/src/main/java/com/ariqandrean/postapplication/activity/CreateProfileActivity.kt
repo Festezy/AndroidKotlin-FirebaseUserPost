@@ -20,7 +20,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.ariqandrean.postapplication.databinding.ActivityCreateProfileBinding
 import com.ariqandrean.postapplication.model.MyProfileModel
 import com.bumptech.glide.Glide
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -55,24 +54,24 @@ class CreateProfileActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val myProfile = MyProfileModel()
-        val CircleImageView: CircleImageView = binding.createProfileImageView
+        val circleImageView: CircleImageView = binding.createProfileImageView
         val nameEditText: EditText = binding.createProfileNameEditText
         val bioEditText: EditText = binding.createProfileBioEditText
         val emailEditText: EditText = binding.createProfileEmailEditText
         val createTextView: TextView = binding.createProfileCREATETextView
         val progressBar: ProgressBar = binding.createProfileProgressBar
 
-        var currentUser: FirebaseUser? = auth.currentUser
+        val currentUser: FirebaseUser? = auth.currentUser
         currentUser?.let {
             uid = it.uid
         }
 
-        val resultLauncher: ActivityResultLauncher<Intent> =registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        val resultLauncher: ActivityResultLauncher<Intent> =registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ it ->
             try {
                 if (it?.resultCode == Activity.RESULT_OK){
                     it.data?.let {
                         imageUri = it.data
-                        Glide.with(this).load(imageUri).into(CircleImageView)
+                        Glide.with(this).load(imageUri).into(circleImageView)
                     }
                 }
             } catch (e: Exception){
@@ -80,7 +79,7 @@ class CreateProfileActivity : AppCompatActivity() {
             }
         }
 
-        CircleImageView.setOnClickListener{
+        circleImageView.setOnClickListener{
             val intent = Intent().apply {
                 setType("image/*")
                 setAction(Intent.ACTION_GET_CONTENT)
@@ -109,9 +108,9 @@ class CreateProfileActivity : AppCompatActivity() {
                             throw it.exception!!.cause!!
                         }
                         reference.downloadUrl
-                    }.addOnCompleteListener {
+                    }.addOnCompleteListener { it ->
                         if (it.isSuccessful){
-                            it.result?.let {
+                            it.result?.let { it ->
                                 val downloadUri = it
                                 val profileMap = HashMap<String, String>()
                                 profileMap.put("name", name)

@@ -64,7 +64,7 @@ class MyProfileActivity : AppCompatActivity() {
                         val uri = it.getString("uri")
 
                         Glide.with(this).load(uri).into(circleImageView)
-                        nameTextView.text = name
+                        nameTextView.setText(name)
                         bioTextView.setText(bio)
                         emailEditText.setText(email)
                     } else {
